@@ -103,4 +103,4 @@ Choose from 5 built-in themes:
 
 ---
 
-**Authors:** Update with your name(s) here
+**Authors:** Devansh Jain, Yash Soni
