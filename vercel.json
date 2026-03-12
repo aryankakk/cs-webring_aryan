@@ -8,10 +8,5 @@
       "source": "/api/:path*",
       "destination": "/api/:path*.js"
     }
-  ],
-  "env": [
-    "EMAIL_USER",
-    "EMAIL_PASSWORD",
-    "FRONTEND_URL"
   ]
 }
