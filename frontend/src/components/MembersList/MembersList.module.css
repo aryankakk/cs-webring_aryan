@@ -14,13 +14,16 @@
 }
 
 .icon {
-  font-size: 18px;
+  font-size: 20px;
   opacity: 0.8;
-  transition: filter 0.3s ease;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .iconFocused {
-  filter: brightness(0) saturate(100%) invert(93%) sepia(93%) saturate(30%) hue-rotate(125deg) brightness(107%) contrast(106%);
+  color: rgba(255, 255, 255, 0.96);
+  opacity: 1;
 }
 
 .search {

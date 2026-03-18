@@ -27,6 +27,88 @@
   user-select: none;
 }
 
+.taglineCycler {
+  position: relative;
+  width: min(90vw, 34rem);
+  min-height: 2.1rem;
+  margin-top: 0.8rem;
+}
+
+.taglineItem {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transform: scale(0.97);
+  filter: blur(5px);
+  will-change: opacity, transform, filter;
+}
+
+.taglineItem:first-child {
+  animation: taglineFirst 6s ease-in-out infinite;
+}
+
+.taglineItem:last-child {
+  animation: taglineSecond 6s ease-in-out infinite;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes taglineFirst {
+  0%, 42% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  50%, 86% {
+    opacity: 0;
+    transform: scale(0.97);
+    filter: blur(5px);
+  }
+  94%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes taglineSecond {
+  0%, 44% {
+    opacity: 0;
+    transform: scale(0.97);
+    filter: blur(5px);
+  }
+  52%, 82% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  90%, 100% {
+    opacity: 0;
+    transform: scale(0.97);
+    filter: blur(5px);
+  }
+}
+
 .scene {
   height: 260vh;
   position: relative;
@@ -126,4 +208,20 @@
 .topLeftLogo:hover img {
   opacity: 1;
   transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .taglineCycler {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .taglineItem {
+    position: static;
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }

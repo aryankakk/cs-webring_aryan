@@ -103,7 +103,7 @@ export default function MembersList({ sites }: { sites?: Site[] } = {}) {
   return (
     <div className={styles.wrap}>
       <div className={styles.searchRow}>
-        <span className={`${styles.icon} ${focused ? styles.iconFocused : ""}`}>🔍</span>
+        <span className={`${styles.icon} ${focused ? styles.iconFocused : ""}`}>⌕</span>
         <input
           ref={inputRef}
           className={styles.search}

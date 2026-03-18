@@ -11,6 +11,7 @@ export default function Scene() {
   const p = useSmoothScrollProgress(sceneRef, { followSpeed: 12, maxStep: 0.03 });
   const autoScrollDoneRef = useRef(false);
   const autoScrollCancelRef = useRef(false);
+  const introTaglines = ["Building a Community", "Join the Ring"];
 
   // NEW: track if arrow has been clicked
   const [arrowClicked, setArrowClicked] = useState(false);
@@ -184,6 +185,14 @@ export default function Scene() {
         {showTitle && (
           <div className={styles.titleOverlay}>
             <h1>CS RING</h1>
+            <div className={styles.taglineCycler} aria-hidden="true">
+              {introTaglines.map((tagline) => (
+                <span key={tagline} className={styles.taglineItem}>
+                  {tagline}
+                </span>
+              ))}
+            </div>
+            <p className={styles.srOnly}>{introTaglines.join(". ")}</p>
           </div>
         )}
 
