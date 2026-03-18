@@ -97,8 +97,8 @@ const transporter = nodemailer.createTransport({
 
 3. **Test Gmail access:**
    - Go to https://myaccount.google.com/security
-   - Check "Less secure app access" is enabled (for older Gmail accounts)
-   - OR verify App Password is set correctly
+   - Verify 2-step verification is enabled
+   - Verify the App Password is set correctly
 
 4. **Check backend logs:**
    ```bash

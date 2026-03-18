@@ -30,7 +30,7 @@ Production mode:
 npm start
 ```
 
-Server runs on `http://localhost:5000` by default.
+Server runs on `http://localhost:5000` by default. For this repo's local frontend integration, set `PORT=3001` in `backend/.env`.
 
 ## API Endpoints
 
@@ -85,19 +85,19 @@ Health check endpoint.
 - **Code Expiration**: Codes expire after 10 minutes
 - **Attempt Limiting**: Max 3 verification attempts per code
 - **Domain Validation**: Only accepts @mylaurier.ca emails
-- **Verified Members**: Stores verified members in `verified-members.json`
+- **Verified Members**: Stores locally verified members in `verified-members.json`
 - **CORS**: Configured for frontend development
 
 ## Environment Variables
 
-- `PORT`: Server port (default: 5000)
+- `PORT`: Server port (default: 5000; use `3001` for the current frontend's local join flow)
 - `FRONTEND_URL`: Frontend URL for CORS (default: http://localhost:5173)
 - `EMAIL_USER`: Gmail address for sending emails
 - `EMAIL_PASSWORD`: Gmail app password
 
 ## Storage
 
-Verified members are stored in `verified-members.json` in the backend directory.
+Verified members are stored in `verified-members.json` in the backend directory during local development.
 
 Example structure:
 ```json

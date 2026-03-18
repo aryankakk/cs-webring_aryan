@@ -48,7 +48,7 @@ cp .env.example .env
 
 Example `.env`:
 ```env
-PORT=5000
+PORT=3001
 FRONTEND_URL=http://localhost:5173
 EMAIL_USER=your.email@gmail.com
 EMAIL_PASSWORD=xxxx xxxx xxxx xxxx
@@ -69,15 +69,15 @@ npm run dev
 cd backend
 npm run dev
 ```
-✅ Watch for: `Backend server running on port 5000`
-✅ Test: `curl http://localhost:5000/api/health`
+✅ Watch for: `Backend server running on port 3001`
+✅ Test: `curl http://localhost:3001/api/health`
 
 ## Testing Email Verification
 
 1. [ ] Open http://localhost:5173 in browser
 2. [ ] Scroll to bottom, click "Join the Ring" button
 3. [ ] Modal should open
-4. [ ] Enter your @mylaurier.ca email
+4. [ ] Enter your Laurier ID (for example `abcd1234`)
 5. [ ] Click "Send Verification Code"
 6. [ ] Check your email inbox for verification code
 7. [ ] Copy the 6-digit code
@@ -89,9 +89,9 @@ npm run dev
 
 ### Backend won't start
 ```bash
-# Check port 5000 not in use
-lsof -i :5000  # macOS/Linux
-netstat -ano | findstr :5000  # Windows
+# Check port 3001 not in use
+lsof -i :3001  # macOS/Linux
+netstat -ano | findstr :3001  # Windows
 ```
 
 ### Email not sending
@@ -101,18 +101,18 @@ netstat -ano | findstr :5000  # Windows
 - [ ] Look at backend terminal for error messages
 
 ### Frontend can't reach backend
-- [ ] Verify backend is running on http://localhost:5000
+- [ ] Verify backend is running on http://localhost:3001
 - [ ] Check browser console (F12) for error details
 - [ ] Look for CORS errors in Network tab
-- [ ] Ensure firewall allows localhost:5000
+- [ ] Ensure firewall allows localhost:3001
 
 ### Port Already in Use
 ```bash
 # Kill process on port 5173 (frontend)
 lsof -i :5173 | grep LISTEN | awk '{print $2}' | xargs kill -9
 
-# Kill process on port 5000 (backend)
-lsof -i :5000 | grep LISTEN | awk '{print $2}' | xargs kill -9
+# Kill process on port 3001 (backend)
+lsof -i :3001 | grep LISTEN | awk '{print $2}' | xargs kill -9
 ```
 
 ## File Locations Reference
@@ -126,7 +126,7 @@ lsof -i :5000 | grep LISTEN | awk '{print $2}' | xargs kill -9
 | API Server | `backend/index.js` |
 | Verified Members | `backend/verified-members.json` |
 | Setup Docs | `SETUP.md` |
-| Email Docs | `EMAIL_VERIFICATION.md` |
+| Email Docs | `EMAIL_SETUP.md` |
 
 ## Common Commands
 
@@ -142,7 +142,7 @@ cd backend && npm start             # Start production
 cd backend && node --watch index.js # Manual restart
 
 # Testing
-curl http://localhost:5000/api/health  # Check backend
+curl http://localhost:3001/api/health  # Check backend
 open http://localhost:5173              # Open frontend
 ```
 
@@ -170,7 +170,7 @@ open http://localhost:5173              # Open frontend
 ## Support Resources
 
 - **Setup Guide:** `SETUP.md`
-- **Email System:** `EMAIL_VERIFICATION.md`
+- **Email Setup:** `EMAIL_SETUP.md`
 - **Backend Docs:** `backend/README.md`
 - **Frontend Code:** `frontend/src/`
 - **GitHub Issues:** Report bugs here

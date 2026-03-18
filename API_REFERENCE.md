@@ -1,6 +1,6 @@
 # API Reference - WLU Webring Email Verification
 
-Base URL: `http://localhost:5000` (development) or `https://your-api.com` (production)
+Base URL: `http://localhost:3001` (development with the current frontend) or `https://your-api.com` (production)
 
 ---
 
@@ -12,7 +12,7 @@ Send verification code to user's email.
 
 ```http
 POST /api/send-verification HTTP/1.1
-Host: localhost:5000
+Host: localhost:3001
 Content-Type: application/json
 
 {
@@ -101,7 +101,7 @@ Verify code and register member.
 
 ```http
 POST /api/join-ring HTTP/1.1
-Host: localhost:5000
+Host: localhost:3001
 Content-Type: application/json
 
 {
@@ -204,7 +204,7 @@ Health check endpoint for monitoring.
 
 ```http
 GET /api/health HTTP/1.1
-Host: localhost:5000
+Host: localhost:3001
 ```
 
 ### Response (200)
@@ -223,7 +223,7 @@ Verify API server is running and responding to requests.
 ### Example Usage
 
 ```bash
-curl http://localhost:5000/api/health
+curl http://localhost:3001/api/health
 ```
 
 ---
@@ -287,7 +287,7 @@ curl http://localhost:5000/api/health
 
 ```typescript
 // Send verification code
-const response = await fetch("http://localhost:5000/api/send-verification", {
+const response = await fetch("http://localhost:3001/api/send-verification", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ email: "user@mylaurier.ca" }),
@@ -301,7 +301,7 @@ if (response.ok) {
 }
 
 // Verify code
-const response = await fetch("http://localhost:5000/api/join-ring", {
+const response = await fetch("http://localhost:3001/api/join-ring", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
@@ -322,17 +322,17 @@ if (response.ok) {
 
 ```bash
 # Send verification code
-curl -X POST http://localhost:5000/api/send-verification \
+curl -X POST http://localhost:3001/api/send-verification \
   -H "Content-Type: application/json" \
   -d '{"email":"user@mylaurier.ca"}'
 
 # Verify code
-curl -X POST http://localhost:5000/api/join-ring \
+curl -X POST http://localhost:3001/api/join-ring \
   -H "Content-Type: application/json" \
   -d '{"email":"user@mylaurier.ca","code":"123456"}'
 
 # Health check
-curl http://localhost:5000/api/health
+curl http://localhost:3001/api/health
 ```
 
 ### Python
@@ -342,14 +342,14 @@ import requests
 
 # Send verification code
 response = requests.post(
-    "http://localhost:5000/api/send-verification",
+    "http://localhost:3001/api/send-verification",
     json={"email": "user@mylaurier.ca"}
 )
 print(response.json())
 
 # Verify code
 response = requests.post(
-    "http://localhost:5000/api/join-ring",
+    "http://localhost:3001/api/join-ring",
     json={
         "email": "user@mylaurier.ca",
         "code": "123456"

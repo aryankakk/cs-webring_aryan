@@ -37,33 +37,28 @@ Click the "Fork" button on GitHub to create your own copy.
 
 ### Step 2: Add Your Site
 
-Edit `data/webring.json` and add your entry at the end of the `sites` array:
+Edit `data/members.json` and add your entry to the array:
 
 ```json
 {
-  "id": "your-unique-id",
-  "name": "Your Site Name",
-  "url": "https://yoursite.com",
-  "description": "Brief description (max 200 chars)",
-  "owner": "Your Name",
-  "added": "2026-01-28"
+  "name": "Your Name",
+  "year": 2027,
+  "website": "https://yoursite.com"
 }
 ```
 
 **Field Guidelines:**
-- `id`: Lowercase, alphanumeric with hyphens only (e.g., `johns-tech-blog`)
-- `name`: Your site's display name
-- `url`: Full URL including `https://`
-- `description`: Keep it under 200 characters
-- `owner`: Your name or handle
-- `added`: Today's date in YYYY-MM-DD format
+- `name`: Your display name
+- `year`: Your expected graduation year (optional, but preferred)
+- `website`: Full URL including `https://`
 
 ### Step 3: Validate Your Entry
 
-Run the validation script to check for errors:
+Build the frontend to make sure the JSON is valid and the app still compiles:
 
 ```bash
-node scripts/validate.js
+cd frontend
+npm run build
 ```
 
 ### Step 4: Submit a Pull Request
@@ -88,14 +83,14 @@ After your PR is merged, add the widget to your site:
 To update your site information:
 
 1. Fork (or update your existing fork)
-2. Edit your entry in `data/webring.json`
+2. Edit your entry in `data/members.json`
 3. Submit a Pull Request with the changes
 
 ## 🗑️ Removing Your Site
 
 If you want to leave the webring:
 
-1. Submit a PR removing your entry from `data/webring.json`
+1. Submit a PR removing your entry from `data/members.json`
 2. Remove the widget from your site
 
 ## 🚫 Grounds for Removal

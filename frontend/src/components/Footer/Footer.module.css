@@ -7,23 +7,23 @@
 }
 
 .joinButton {
-  background: var(--wlu-gold);
-  color: var(--wlu-purple);
+  background: transparent;
+  color: var(--wlu-gold);
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  font-weight: 600;
+  padding: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 18px rgba(253, 185, 19, 0.18);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s ease;
 }
 
 .joinButton:hover {
-  background: #ffe08a;
-  transform: translateY(-2px);
+  color: #ffe08a;
 }
 
 .joinButton:focus {
   outline: 2px solid var(--wlu-gold);
   outline-offset: 2px;
 }
-

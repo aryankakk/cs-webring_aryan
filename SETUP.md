@@ -43,7 +43,7 @@ Edit `.env` with your Gmail credentials:
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASSWORD=your-app-password
 FRONTEND_URL=http://localhost:5173
-PORT=5000
+PORT=3001
 ```
 
 #### Setting Up Gmail App Password
@@ -59,7 +59,7 @@ Start the backend:
 npm run dev
 ```
 
-Backend runs on `http://localhost:5000`
+For local development with the current frontend, run the backend on `http://localhost:3001`
 
 ## Features
 
@@ -81,7 +81,7 @@ The "Join the Ring" button opens a modal that:
 ### Data Files
 
 - `data/members.json` - Public member list (name, year, website)
-- `backend/verified-members.json` - Auto-generated file tracking verified emails
+- `backend/verified-members.json` - Auto-generated file tracking verified emails locally
 
 ## API Endpoints
 
@@ -89,7 +89,7 @@ The "Join the Ring" button opens a modal that:
 Send verification code to email.
 
 ```bash
-curl -X POST http://localhost:5000/api/send-verification \
+curl -X POST http://localhost:3001/api/send-verification \
   -H "Content-Type: application/json" \
   -d '{"email":"user@mylaurier.ca"}'
 ```
@@ -98,7 +98,7 @@ curl -X POST http://localhost:5000/api/send-verification \
 Verify code and register member.
 
 ```bash
-curl -X POST http://localhost:5000/api/join-ring \
+curl -X POST http://localhost:3001/api/join-ring \
   -H "Content-Type: application/json" \
   -d '{"email":"user@mylaurier.ca","code":"123456"}'
 ```
@@ -107,7 +107,7 @@ curl -X POST http://localhost:5000/api/join-ring \
 Health check endpoint.
 
 ```bash
-curl http://localhost:5000/api/health
+curl http://localhost:3001/api/health
 ```
 
 ## Development Workflow
@@ -133,7 +133,7 @@ Visit `http://localhost:5173` to see the frontend.
 ### Testing Email Verification
 
 1. Click "Join the Ring" button at bottom of page
-2. Enter a test @mylaurier.ca email (e.g., `test@mylaurier.ca`)
+2. Enter a test Laurier ID (e.g., `test1234`)
 3. Check your email for verification code
 4. Enter the code in the modal
 5. Success screen appears
@@ -142,13 +142,13 @@ Visit `http://localhost:5173` to see the frontend.
 
 **Frontend issues:**
 - Check browser console (F12)
-- Verify backend is running on http://localhost:5000
+- Verify backend is running on http://localhost:3001
 - Check CORS errors in network tab
 
 **Backend issues:**
 - Check terminal output for errors
 - Verify `.env` file has correct Gmail credentials
-- Try test endpoint: `curl http://localhost:5000/api/health`
+- Try test endpoint: `curl http://localhost:3001/api/health`
 
 ## File Structure Reference
 
@@ -223,7 +223,7 @@ Set these in your deployment platform:
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASSWORD=your-app-password
 FRONTEND_URL=https://cs-webring.vercel.app
-PORT=5000
+PORT=3001
 NODE_ENV=production
 ```
 
@@ -257,7 +257,7 @@ Update `backend/index.js` to use your database instead of file storage.
 
 ### "Connection refused" errors
 - Ensure backend is running (`npm run dev` in backend/)
-- Verify `http://localhost:5000` is accessible
+- Verify `http://localhost:3001` is accessible
 - Check CORS settings in backend/index.js
 
 ### Code keeps expiring
@@ -266,7 +266,7 @@ Update `backend/index.js` to use your database instead of file storage.
 
 ### Verified members not saving
 - Check backend has write permissions to `backend/`
-- Verify `verified-members.json` is not in `.gitignore`
+- `backend/verified-members.json` is intentionally gitignored; confirm the file is being created locally
 - Check file system not full
 
 ## Additional Resources
