@@ -85,8 +85,14 @@ export default function MembersList({ sites }: { sites?: Site[] } = {}) {
   );
 
   const results = useMemo(() => {
-    if (!query.trim()) return loadedSites;
-    return fuse.search(query).map((r) => r.item);
+    const q = query.trim();
+    if (!q) return loadedSites;
+    // Exact match for year queries (4-digit number)
+    if (/^\d{4}$/.test(q)) {
+      const year = Number(q);
+      return loadedSites.filter((s) => s.year === year);
+    }
+    return fuse.search(q).map((r) => r.item);
   }, [query, fuse, loadedSites]);
 
   useEffect(() => {
