@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding-top: 6vh;
   padding-bottom: 10vh;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.95);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -15,14 +15,14 @@
 
 .icon {
   font-size: 20px;
-  opacity: 0.8;
+  opacity: 0.9;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.88);
   transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .iconFocused {
-  color: rgba(255, 255, 255, 0.96);
+  color: #fff;
   opacity: 1;
 }
 
@@ -31,14 +31,14 @@
   background: transparent;
   border: none;
   outline: none;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 15px;
   letter-spacing: 0.02em;
   padding: 6px 2px;
 }
 
 .search::placeholder {
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .rule {
@@ -58,12 +58,12 @@
 
 .item {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 15px;
   letter-spacing: 0.02em;
   text-align: left;
   transition: opacity 120ms ease, transform 120ms ease;
-  opacity: 0.78;
+  opacity: 0.88;
 }
 
 .item:hover {
