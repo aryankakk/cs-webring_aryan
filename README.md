@@ -1,9 +1,5 @@
 # CS Webring
 
-<p align="center">
-  <img src="./assets/icon.black.svg" alt="CS Webring icon" width="110" />
-</p>
-
 A webring for Computer Science students and alumni to connect their personal sites, portfolios, and projects through one shared ring.
 
 **Visit the Live site:** [here](https://wluring.com)
@@ -11,11 +7,8 @@ A webring for Computer Science students and alumni to connect their personal sit
 ---
 ## Joining the Webring
 
-### 1. Fork this repository
-
-Create your own fork of the project.
-
-### 2. Add your site to `data/members.json`
+1. Fork this repository
+2. Add your site to `data/members.json`
 
 Add your entry to the members array using this format:
 
@@ -26,7 +19,48 @@ Add your entry to the members array using this format:
   "website": "https://your-site.com"
 }
 ```
-### 3. Submit a PR and we'll try to review as fast as possible! 
+3. Submit a PR and we'll try to review it as fast as possible!
+
+## Widget
+
+#### HTML:
+
+```html
+<div className="mb-6 flex items-center gap-2">
+  <a href="https://wluring.com/go?site=https%3A%2F%2Fyour-site-here%2F&nav=prev">&#8592;</a>
+  <a href="https://wluring.com/">
+    <img
+      src={theme === "dark" ? "https://wluring.com/icon.white.svg" : "https://wluring.com/icon.black.svg"%7D
+      alt="CS Webring"
+      style={{ width: 24, height: "auto", opacity: 0.8 }}
+    />
+  </a>
+  <a href="https://wluring.com/go?site=https%3A%2F%2Fyour-site-here%2F&nav=next">&#8594;</a>
+</div>
+<!-- Replace 'your-site-here' with your actual site URL -->
+```
+
+#### JSX:
+
+```jsx
+<div className="mb-6 flex items-center gap-2">
+  <a href="https://wluring.com/go?site=https%3A%2F%2Fyour-site-here%2F&nav=prev">←</a>
+  <a href="https://wluring.com/">
+    <img
+      src={
+        theme === "dark"
+          ? "https://wluring.com/icon.white.svg"
+          : "https://wluring.com/icon.black.svg"
+      }
+      alt="CS Webring"
+      style={{ width: 24, height: "auto", opacity: 0.8 }}
+    />
+  </a>
+  <a href="https://wluring.com/go?site=https%3A%2F%2Fyour-site-here%2F&nav=next">→</a>
+</div>
+// Replace 'your-site-here' with your actual site URL
+```
+
 
 ## What is a webring?
 
