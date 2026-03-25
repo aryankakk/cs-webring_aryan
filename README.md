@@ -1,183 +1,58 @@
-![active development](https://img.shields.io/badge/active%20dev-yes-brightgreen.svg)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Devansh015/cs-webring.svg)
-
 # CS Webring
-<img alt="cs-webring icon" src="./assets/logo/logo_bg.svg" width="100" height="100">
 
-A webring for Computer Science (CS) students at our university.
+<p align="center">
+  <img src="./assets/icon.black.svg" alt="CS Webring icon" width="110" />
+</p>
 
-**Live Site:** [cs-webring.vercel.app](https://cs-webring.vercel.app)
+A webring for Computer Science students and alumni to connect their personal sites, portfolios, and projects through one shared ring.
 
----
-
-## What's a webring?
-
-A webring is a group of websites linked together in a circular manner, centered around a common theme. They were popular in the 90s as a discovery mechanism. The CS Webring connects personal sites and portfolios of current and former CS students, making them more discoverable.
+**Visit the Live site:** [here](https://wluring.com)
 
 ---
+## Joining the Webring
 
-## How it works
+### 1. Fork this repository
 
-All navigation logic lives on the central webring site. Member sites only need a small HTML snippet — no JavaScript widget or external script required.
+Create your own fork of the project.
 
-When a visitor clicks **←** or **→** on a member site, they are taken to:
+### 2. Add your site to `data/members.json`
 
-```
-https://cs-webring.vercel.app/go?site=<encoded-url>&nav=prev|next|random
-```
-
-The central router (`/go`) reads the query parameters, looks up the site in `data/members.json` by hostname, computes the previous/next member with wraparound, and redirects in the same tab.
-
----
-
-## How do I join?
-
-### Step 1: Submit a Pull Request
-
-1. Fork this repository
-2. Add your site to `data/members.json`:
+Add your entry to the members array using this format:
 
 ```json
 {
   "name": "Your Name",
   "year": 2027,
-  "website": "https://yoursite.com"
+  "website": "https://your-site.com"
 }
 ```
+### 3. Submit a PR and we'll try to review as fast as possible! 
 
-3. Open a [pull request](https://github.com/Devansh015/cs-webring/pulls) with:
-   - Your full name
-   - Cohort/graduation year
-   - Full website URL
-   - Link to verify identity (GitHub, LinkedIn, etc.)
+## What is a webring?
 
-Your PR will be approved if you meet all requirements and there's no inappropriate content.
+A webring is a group of websites connected in a circle. Each member site links to the previous and next site, making it easy to discover other people in the same community.
 
-### Step 2: Add the embed snippet to your site
-
-After your PR is merged, paste one of the snippets below into your site. **Replace `https://your-site.com/` with the exact URL you submitted**, URL-encoded in the `site=` parameter.
-
-#### HTML
-
-```html
-<div style="display:flex;align-items:center;gap:8px;">
-  <a href="https://cs-webring.vercel.app/go?site=https%3A%2F%2Fyour-site.com%2F&nav=prev">←</a>
-  <a href="https://cs-webring.vercel.app/">
-    <img
-      src="https://cs-webring.vercel.app/icon.black.svg"
-      alt="CS Webring"
-      style="width:24px;height:auto;opacity:0.8;"
-    />
-  </a>
-  <a href="https://cs-webring.vercel.app/go?site=https%3A%2F%2Fyour-site.com%2F&nav=next">→</a>
-</div>
-```
-
-#### JSX (React)
-
-```jsx
-<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-  <a href="https://cs-webring.vercel.app/go?site=https%3A%2F%2Fyour-site.com%2F&nav=prev">←</a>
-  <a href="https://cs-webring.vercel.app/">
-    <img
-      src="https://cs-webring.vercel.app/icon.black.svg"
-      alt="CS Webring"
-      style={{ width: "24px", height: "auto", opacity: 0.8 }}
-    />
-  </a>
-  <a href="https://cs-webring.vercel.app/go?site=https%3A%2F%2Fyour-site.com%2F&nav=next">→</a>
-</div>
-```
-
-> **Important:** The `site=` value must be URL-encoded. For example, `https://your-site.com/` becomes `https%3A%2F%2Fyour-site.com%2F`. The router matches sites by hostname, so minor trailing-slash differences won't break matching, but the URL must be encoded correctly in the `site=` parameter.
+This project brings that idea to CS students and alumni by giving everyone a simple way to link their sites together and discover others in the community.
 
 ---
 
-## Central router details
+## FAQ
 
-The router lives at [`/go`](frontend/public/go/index.html) and accepts these query parameters:
+#### _I'm not in CS. Can I still join?_
 
-| Parameter | Required | Values | Description |
-|-----------|----------|--------|-------------|
-| `site`    | Yes      | URL-encoded member URL | The current member site |
-| `nav`     | Yes      | `prev`, `next`, `random` | Navigation direction |
+> We’re really glad you’re interested in the webring. If you’re a Laurier student outside of CS, there may be a better fit depending on your program,
+> Students in Data Science or other closely related computing programs are still welcome to reach out or submit a PR, and we can review those on a case-by-case basis.
+>
 
-**Behavior:**
-- Matches the `site` parameter against `data/members.json` entries by hostname
-- Computes prev/next with circular wraparound
-- Redirects in the same tab via `window.location.replace()`
-- Shows a friendly error message for invalid or missing parameters
+#### _Do you accept alumni and post-grad students?_
 
----
+> Yep, as long as you studied Computer Science, Data Science or are currently studying it
 
-## Data format
+#### _What about minors, double degrees (ie CS BBA), etc?_
 
-`data/members.json` is the single source of truth. It is a JSON array of member objects:
+> Join up!  
 
-```json
-[
-  {
-    "name": "Your Name",
-    "year": 2027,
-    "website": "https://yoursite.com"
-  }
-]
-```
-
-| Field     | Type   | Required | Description |
-|-----------|--------|----------|-------------|
-| `name`    | string | Yes      | Display name |
-| `year`    | number | No       | Expected graduation year |
-| `website` | string | Yes      | Full URL with `https://` |
+If a case is unclear, it can be reviewed individually.
 
 ---
-
-## Deploy
-
-This project is configured for deployment on **Vercel**.
-
-### Quick Deploy
-```bash
-npm install -g vercel
-vercel --prod
-```
-
-### Full Setup
-See [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md) for complete deployment instructions.
-
-### Local Development
-```bash
-# Terminal 1: Backend API
-cd backend
-npm run dev
-
-# Terminal 2: Frontend
-cd frontend
-npm run dev
-```
-
-Set `PORT=3001` in `backend/.env` for local development so the join flow matches the frontend's local API target.
-
-For convenience, use the included deployment commands:
-```bash
-source vercel-commands.sh
-help                    # Show available commands
-dev-all                 # Start both backend and frontend
-vercel-deploy           # Deploy to production
-```
-
----
-
-## Migration from the old widget
-
-If you were previously using the `<script>` widget (`webring.js` / `webring.min.js`), you can remove it entirely and replace it with the static HTML embed snippet above. The old widget fetched member data and computed navigation on each member site — that logic now runs on the central site's `/go` router instead.
-
-**To migrate:**
-1. Remove the old `<script>` and `<link>` tags for `webring.js` and `themes.css`
-2. Remove the `<div id="cs-webring"></div>` container
-3. Paste the new HTML embed snippet (see [Step 2](#step-2-add-the-embed-snippet-to-your-site) above)
-4. Replace `https://your-site.com/` with your actual site URL (URL-encoded)
-
----
-
 **Authors:** Devansh Jain, Yash Soni
